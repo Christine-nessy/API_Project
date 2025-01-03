@@ -5,11 +5,96 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>User Registration</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+    <style>
+        /* General Body Styling */
+        /* body {
+            font-family: 'Arial', sans-serif;
+            background: url('https://www.transparenttextures.com/patterns/white-mesh.png') no-repeat center center fixed;
+            background-size: cover;
+            height: 100vh;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: #fff;
+        } */
+        body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(to right, #084590, #887bfe); /* Gradient from pink to orange */
+    height: 100vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #fff;
+}
+
+
+        /* Glass Effect Styling */
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1); /* Slightly transparent white background */
+            backdrop-filter: blur(10px); /* Glass effect */
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15); /* Subtle shadow for the glass effect */
+            padding: 30px;
+            max-width: 400px;
+            width: 100%;
+        }
+
+        /* Form Inputs and Button Styling */
+        .form-label {
+            color: black;
+            font-weight: bold;
+        }
+
+        .form-control {
+            background-color: rgba(227, 221, 221, 0.299);
+            color:black;
+            border: 1px solid rgba(255, 255, 255, 0.5);
+            margin-bottom: 15px;
+        }
+
+        .form-control:focus {
+            background-color: rgba(255, 255, 255, 0.4);
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+        }
+
+        .btn-primary {
+            background-color: #007bff;
+            border-color: #007bff;
+            padding: 12px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            width: 100%;
+            transition: background-color 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background-color: #0056b3;
+        }
+
+        h2 {
+            color: black;
+            text-align: center;
+            font-size: 28px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+
+        /* Mobile Responsiveness */
+        @media (max-width: 576px) {
+            .glass-effect {
+                padding: 20px;
+                max-width: 350px;
+            }
+        }
+    </style>
 </head>
-<body class="bg-light">
-    <div class="container mt-5">
-        <h2 class="text-center">User Registration</h2>
-        <form action="process.php" method="POST" class="mt-4">
+<body>
+    <div class="glass-effect">
+        <h2>User Registration</h2>
+        <form action="process.php" method="POST">
             <div class="mb-3">
                 <label for="username" class="form-label">Username</label>
                 <input type="text" class="form-control" id="username" name="username" required>
@@ -27,3 +112,4 @@
     </div>
 </body>
 </html>
+

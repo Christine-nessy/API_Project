@@ -33,10 +33,15 @@ class User {
         $stmt->bindParam(':email', $email);
         $stmt->bindParam(':password', $hashedPassword);
 
-        if ($stmt->execute()) {
-            return true;
+        try {
+            if ($stmt->execute()) {
+                return true;
+            } else {
+                return "Error inserting data.";
+            }
+        } catch (PDOException $e) {
+            return "Error: " . $e->getMessage();
         }
-        return false;
     }
 }
 
@@ -46,16 +51,28 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $email = htmlspecialchars($_POST['email']);
     $password = htmlspecialchars($_POST['password']);
 
+    // Validate email format
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        echo "Invalid email format.";
+        exit;
+    }
+   
+
     // Database Connection
     $database = new Database();
     $db = $database->connect();
 
-    // User Registration
     $user = new User($db);
-    if ($user->register($username, $email, $password)) {
+    $result = $user->register($username, $email, $password);
+
+    if ($result === true) {
         echo "User registered successfully!";
     } else {
-        echo "Failed to register user.";
+        echo "Failed to register user. Error: " . $result;
     }
+} else {
+    echo "This script only handles POST requests.";
+
 }
 ?>
+
